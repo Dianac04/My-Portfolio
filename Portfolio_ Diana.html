@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diana Gomez | Data Analyst Portfolio</title>
+
+    <meta name="description" content="Portfolio of Diana Gomez — Data Analyst specialized in NLP, Power BI, and strategic analytics.">
+    <meta name="author" content="Diana Gomez">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #05070a;
+            --accent: #00f2ff;
+            --secondary: #ff8c00;
+            --border: rgba(0, 242, 255, 0.2);
+            --glass: rgba(255, 255, 255, 0.03);
+            --text: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 80%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--accent);
+            text-decoration: none;
+            margin-left: 25px;
+            font-family: 'Orbitron';
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: white; }
+
+        .container { padding: 120px 10% 80px 10%; }
+
+        h2.section-title {
+            font-family: 'Orbitron';
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #002b30 0%, #05070a 80%);
+            border-bottom: 1px solid var(--border);
+            padding: 0 10%;
+        }
+
+        header h1 {
+            font-family: 'Orbitron';
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin: 0;
+            color: white;
+            text-shadow: 0 0 10px var(--accent);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px var(--accent); }
+            to   { text-shadow: 0 0 25px var(--accent); }
+        }
+
+        .btn-glow {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Orbitron';
+            margin-top: 20px;
+            transition: 0.4s;
+        }
+
+        .btn-glow:hover {
+            background: var(--accent);
+            color: black;
+            box-shadow: 0 0 30px var(--accent);
+        }
+
+        .full-img {
+            width: 100%;
+            max-width: 900px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+            margin: 0 auto 40px auto;
+            display: block;
+            transition: 0.4s;
+        }
+
+        .full-img:hover { border-color: var(--accent); transform: scale(1.01); }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .db-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .db-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+
+        /* HUD SEGMENTATION */
+        .segmentation-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .hud-card {
+            background: rgba(0, 242, 255, 0.02);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 200px;
+	    position: relative;
+        }
+
+        .hud-card:hover {
+            border-color: var(--accent);
+            background: rgba(0, 242, 255, 0.08);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+            animation: hudGlow 2.5s infinite ease-in-out;
+        }
+  
+	@keyframes hudGlow {
+            0% { box-shadow: 0 0 10px rgba(0, 242, 255, 0.2); }
+            50% { box-shadow: 0 0 22px rgba(0, 242, 255, 0.45); }
+            100% { box-shadow: 0 0 10px rgba(0, 242, 255, 0.2); }
+        }
+
+        .hud-percentage {
+            background: var(--accent);
+            color: #000;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            padding: 4px 12px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            border-radius: 2px;
+        }
+
+        .hud-icon {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .hud-title {
+            font-family: 'Orbitron';
+            color: var(--accent);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hud-description {
+            font-size: 0.8rem;
+            color: #ccc;
+            line-height: 1.4;
+            margin-bottom: 20px;
+	    max-width: 90%;
+        }
+
+        .hud-progress-bg {
+            width: 80%;
+            height: 4px;
+            background: rgba(0, 242, 255, 0.1);
+            border-radius: 10px;
+            margin-top: auto;
+        }
+
+        .hud-progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 10px;
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        footer {
+            background: #000;
+            padding: 100px 10%;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-box {
+            display: inline-block;
+            border: 1px solid var(--accent);
+            padding: 40px;
+            border-radius: 20px;
+            background: var(--glass);
+        }
+
+        footer a { color: var(--accent); margin: 0 15px; font-size: 1.5rem; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.8rem; }
+            nav a { margin-left: 10px; font-size: 0.8rem; }
+            .container { padding: 80px 5%; }
+        }
+    </style>
+</head>
+
+<script>
+function copyEmail() {
+    const email = "dcarolinagvargas@gmail.com";
+    navigator.clipboard.writeText(email).then(() => {
+        const alertBox = document.getElementById("copyAlert");
+        alertBox.style.display = "block";
+
+        setTimeout(() => {
+            alertBox.style.display = "none";
+        }, 3000);
+    });
+}
+</script>
+
+<style>
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, 10px); }
+    10% { opacity: 1; transform: translate(-50%, 0); }
+    90% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, 10px); }
+}
+</style>
+
+
+<body>
+
+    <nav>
+        <div style="font-family: Orbitron; color: var(--accent); font-size: 1.00rem;">DG | DATA</div>
+        <div>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#dashboards">Dashboards</a>
+            <a href="#validation">Validation</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header>
+        <p style="letter-spacing: 5px; color: var(--accent);">[ DATA ANALYTICS ]</p>
+        <h1>DIANA GOMEZ</h1>
+        <p style="max-width: 700px; font-size: 1.1rem; line-height: 1.6;">
+            <b>Industrial Engineer | Data Analytics Specialist</b><br>
+            Transforming raw data into strategic intelligence through NLP, Python & Power BI.
+        </p>
+
+        <a href="#projects" class="btn-glow">ACCESS CORE PROJECTS</a>
+        <a href="https://raw.githubusercontent.com/Dianac04/My-Portfolio/main/CV_Diana_Gomez.pdf
+" class="btn-glow" download>DOWNLOAD CV</a>
+    </header>
+
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <p style="max-width: 800px; margin: auto; text-align: center; font-size: 1.1rem; line-height: 1.7;">
+            I am an Industrial Engineer and Data Analytics Specialist focused on transforming raw data 
+            into strategic intelligence. My work blends NLP, dashboard engineering, and statistical modeling 
+            to uncover patterns that drive business decisions and customer understanding.
+        </p>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title">Tourism Intelligence Analytics: NLP, Sentiment Analysis & Customer Segmentation</h2>
+
+        <p style="max-width: 900px; margin: auto; line-height: 1.7; text-align: center;">
+            This case study analyzes 17 years of hotel reviews across Santander, Colombia using NLP, sentiment analysis, 
+            topic modeling, and clustering. The project identifies seven distinct customer archetypes and reveals 
+            behavioral patterns that support strategic decision-making in tourism and hospitality.
+        </p>
+
+        <img src="https://raw.githubusercontent.com/Dianac04/My-Portfolio/main/hotel_reviews_dashboard.png" class="full-img">
+
+        <div class="dashboard-grid">
+            <div class="db-card">
+                <h3>Customer Archetypes</h3>
+                <p>Seven behavioral clusters identified using NLP and unsupervised learning.</p>
+            </div>
+
+            <div class="db-card">
+                <h3>Sentiment Analysis</h3>
+                <p>Polarity and emotional tone extracted from thousands of hotel reviews.</p>
+            </div>
+
+            <div class="db-card">
+                <h3>Regional Insights</h3>
+                <p>Municipality-level patterns reveal tourism strengths and improvement areas.</p>
+            </div>
+        </div>
+    </section>
+
+    		<!-- HUD SEGMENTATION -->
+		<section id="segmentation" class="container">
+		<h2 class="section-title">Customer Archetypes — Strategic Mapping</h2>
+                <div class="segmentation-dashboard">
+
+                    <div class="hud-card">
+                        <div class="hud-percentage">23.54%</div>
+                        <i class="fa-solid fa-utensils hud-icon"></i>
+                        <div class="hud-title">Gastro-Tourist</div>
+                        <div class="hud-description">Driven by high-quality local gastronomy in Bucaramanga and Barichara.</div>
+                        <div class="hud-progress-bg"><div class="hud-progress-fill" style="width: 23%;"></div></div>
+                    </div>
+                
+                    <div class="hud-card">
+                        <div class="hud-percentage">20.66%</div>
+                        <i class="fa-solid fa-globe hud-icon"></i>
+                        <div class="hud-title">Explorer</div>
+                        <div class="hud-description">Value proximity to points of interest and efficient transport routes.</div>
+                        <div class="hud-progress-bg"><div class="hud-progress-fill" style="width: 20%;"></div></div>
+                    </div>
+
+                    <div class="hud-card">
+                        <div class="hud-percentage">18.85%</div>
+                        <i class="fa-solid fa-screwdriver-wrench hud-icon"></i>
+                        <div class="hud-title">Comfort Seeker</div>
+                        <div class="hud-description">Large chains in Bucaramanga lead this category due to infrastructure.</div>
+                        <div class="hud-progress-bg"><div class="hud-progress-fill" style="width: 18%;"></div></div>
+                    </div>
+
+                    <div class="hud-card">
+                        <div class="hud-percentage">17.14%</div>
+                        <i class="fa-solid fa-palette hud-icon"></i>
+                        <div class="hud-title">Cultural Enthusiast</div>
+                        <div class="hud-description">Barichara is the epicenter for this high-aesthetic-value segment.</div>
+                        <div class="hud-progress-bg"><div class="hud-progress-fill" style="width: 17%;"></div></div>
+                    </div>
+
+                    <div class="hud-card">
+                        <div class="hud-percentage">13.94%</div>
+                        <i class="fa-solid fa-gem hud-icon"></i>
+                        <div class="hud-title">Luxury Traveler</div>
+                        <div class="hud-description">Seekers of "off-the-beaten-path" destinations and personalized attention.</div>
+                        <div class="hud-progress-bg"><div class="hud-progress-fill" style="width: 13%;"></div></div>
+                    </div>
+
+                    <div class="hud-card">
+                        <div class="hud-percentage">3.27%</div>
+                        <i class="fa-solid fa-spray-can-sparkles hud-icon"></i>
+                        <div class="hud-title">Hygiene-Conscious</div>
+                        <div class="hud-description">Niche but vital group where Barichara stands out for cleanliness.</div>
+                        <div class="hud-progress-bg"><div class="hud-progress-fill" style="width: 5%;"></div></div>
+                    </div>
+
+                    <div class="hud-card">
+                        <div class="hud-percentage">2.6%</div>
+                        <i class="fa-solid fa-volleyball hud-icon"></i>
+                        <div class="hud-title">Adventure Seeker</div>
+                        <div class="hud-description">Concentrated in San Gil, the "Extreme Sports Capital of Colombia."</div>
+                        <div class="hud-progress-bg"><div class="hud-progress-fill" style="width: 3%;"></div></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboards" class="container">
+        <h2 class="section-title">Executive Dashboards</h2>
+
+        <div class="dashboard-grid">
+
+            <div class="db-card">
+                <h3>Crime Victims in Colombia — Judicial Effectiveness Dashboard</h3>
+                <p><i>Dashboard labels are in Spanish due to original dataset context.</i></p>
+                <p>
+                    This dashboard analyzes the effectiveness of imputation, capture, and conviction processes 
+                    after a crime is reported in Colombia. It includes regional victim distribution, gender comparisons, 
+                    and judicial outcome rates.
+                </p>
+                <p><b>KPIs:</b> Imputation %, Capture %, Conviction %, Total Victims, Crime Categories</p>
+                <a href="https://public.tableau.com/views/VICTIMASDEDELITOSCOMETIDOSENCOLOMBIA/Dashboard2?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" 
+                   class="btn-glow" target="_blank">VIEW DASHBOARD</a>
+            </div>
+
+            <div class="db-card">
+                <h3>Colombian Ethyl Alcohol Exports — Trade Balance & Tariff Analysis</h3>
+                <p><i>Dashboard labels are in Spanish due to original dataset context.</i></p>
+                <p>
+                    This dashboard visualizes Colombia’s export performance for undenatured ethyl alcohol, 
+                    including trade balances, tariff impacts, geographic distribution, and export growth trends.
+                </p>
+                <p><b>KPIs:</b> Export Units, Trade Balance by Country, Average Tariff, % Change 2015–2019</p>
+                <a href="https://public.tableau.com/views/IMPORTACIONESEXPORTACIONESENCOLOMBIA/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" 
+                   class="btn-glow" target="_blank">VIEW DASHBOARD</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="validation" class="container">
+        <h2 class="section-title">Validation</h2>
+
+        <div style="
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 15px;
+            line-height: 1.7;
+        ">
+
+            <h3 style="font-family: Orbitron; color: var(--accent);">Skills Summary</h3>
+            <p>
+                Python (Pandas, NumPy, Scikit‑Learn), NLP (Transformers, Sentiment Analysis), SQL, Power BI (DAX, Data Modeling),  
+                Excel Advanced, SAP ERP, Data Visualization, Dashboard Engineering, Research & Analytics, English C2.
+            </p>
+
+            <h3 style="font-family: Orbitron; color: var(--accent); margin-top: 40px;">Certifications Summary</h3>
+            <p>
+                Python Fundamentals, Pandas & NumPy, Jupyter & Anaconda, AI with ChatGPT & HuggingFace,  
+                SAP ERP Integration, Excel Advanced, Decision‑Making, Research Seminars, EFSET C2 English.
+            </p>
+
+        </div>
+    </section>
+
+    <section id="experience" class="container">
+    <h2 class="section-title">Professional Experience</h2>
+
+    <div style="
+        max-width: 900px;
+        margin: auto;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border);
+        padding: 40px;
+        border-radius: 15px;
+        line-height: 1.7;
+    ">
+
+        <!-- CURRENT EXPERIENCE 2026 -->
+        <h3 style="font-family: Orbitron; color: var(--accent);">Restaurant Manager</h3>
+        <p><b>Tokyo Steakhouse</b> — Lewes, DE (Jan 2026 – Present)</p>
+        <ul>
+            <li>Managed daily operations, staff scheduling, and inventory accuracy in a high‑demand environment.</li>
+            <li>Applied structured workflows to maintain quality, reduce errors, and support operational decision‑making.</li>
+            <li>Analyzed sales and labor data to optimize resource allocation and improve cost efficiency.</li>
+        </ul>
+
+        <h3 style="font-family: Orbitron; color: var(--accent); margin-top: 40px;">Operations Associate</h3>
+        <p><b>Sephora</b> — Rehoboth Beach, DE (Mar 2026 – Present)</p>
+        <ul>
+            <li>Performed inventory reconciliation, cycle counts, and discrepancy resolution to maintain data integrity.</li>
+            <li>Followed standardized procedures to ensure product availability and operational accuracy.</li>
+            <li>Supported operational reporting and collaborated with cross‑functional teams to improve workflow efficiency.</li>
+        </ul>
+
+        <!-- PREVIOUS EXPERIENCE -->
+        <h3 style="font-family: Orbitron; color: var(--accent); margin-top: 40px;">Operations & Customer Service Specialist</h3>
+        <p><b>Dunkin Donuts USA LLC</b> — Rehoboth Beach, DE (2023–2026)</p>
+        <ul>
+            <li>Ensured accuracy in daily operational data, inventory tracking, and workflow execution.</li>
+            <li>Followed structured procedures to maintain consistency and quality in high‑volume environments.</li>
+            <li>Applied analytical problem‑solving to resolve issues and support operational decisions.</li>
+        </ul>
+
+        <h3 style="font-family: Orbitron; color: var(--accent); margin-top: 40px;">Lead Data Analyst — Customer Segmentation & NLP</h3>
+        <p><b>Universidad Industrial de Santander</b> — Remote (2023 – 2024)</p>
+        <ul>
+            <li>Cleaned, validated, and transformed large datasets using Python.</li>
+            <li>Built segmentation and sentiment analysis models using NLP techniques.</li>
+            <li>Developed dashboards (Power BI/Tableau) to visualize KPIs and behavioral insights.</li>
+            <li>Documented processes and validation steps for reproducibility.</li>
+        </ul>
+
+        <h3 style="font-family: Orbitron; color: var(--accent); margin-top: 40px;">Administrative & Data Analyst Assistant</h3>
+        <p><b>Universidad Industrial de Santander</b> — Bucaramanga, Colombia (2021 – 2022)</p>
+        <ul>
+            <li>Automated ~80% of reporting using Excel VBA, reducing manual errors.</li>
+            <li>Conducted data validation and quality checks for institutional datasets.</li>
+            <li>Created tracking and performance reports for operational teams.</li>
+        </ul>
+
+    </div>
+</section>
+
+   <footer id="contact">
+    <div class="contact-box" style="text-align: center; position: relative;">
+
+        <!-- Modern Phone Icon -->
+        <div style="font-size: 4rem; color: var(--accent); margin-bottom: 20px;">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+
+        <h3 style="font-family: Orbitron; color: var(--accent); letter-spacing: 2px; margin-bottom: 10px;">
+            Let's Connect
+        </h3>
+
+        <p style="color: #ccc; font-size: 1rem; margin-bottom: 25px;">
+            Feel free to reach out through any platform below.
+        </p>
+
+        <!-- Social Icons -->
+        <div style="margin-bottom: 25px;">
+            <a href="https://www.linkedin.com/in/diana-gomez-0173011b7" target="_blank" 
+               style="margin: 0 15px; font-size: 1.8rem; color: var(--accent);">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+
+            <a href="https://github.com/Dianac04" target="_blank" 
+               style="margin: 0 15px; font-size: 1.8rem; color: var(--accent);">
+                <i class="fa-brands fa-github"></i>
+            </a>
+
+            <a href="mailto:dcarolinagvargas@gmail.com" 
+               style="margin: 0 15px; font-size: 1.8rem; color: var(--accent);">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </div>
+
+        <!-- Copy Email Button -->
+        <button onclick="copyEmail()" class="btn-glow" 
+           style="margin-top: 10px; font-size: 1rem; padding: 15px 40px; cursor: pointer;">
+            INITIALIZE CONVERSATION
+        </button>
+
+        <!-- Notification -->
+        <div id="copyAlert" style="
+            display: none;
+            position: absolute;
+            bottom: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.85);
+            color: var(--accent);
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-family: Inter;
+            font-size: 0.9rem;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+            border: 1px solid var(--accent);
+            animation: fadeInOut 3s ease forwards;
+        ">
+            Email copied to clipboard!  
+            <br>
+            I'd love to connect if you're interested in my work — thank you for the opportunity!
+        </div>
+
+    </div>
+</footer>
+
+
+
+</body>
+</html>
